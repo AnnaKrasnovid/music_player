@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 
-import Button from '../../UI/Button/Button';
-import Input from '../../UI/Input/Input';
+import Tools from '../Tools/Tools';
+import Progress from '../../UI/Progress/Progress';
 import Sound from '../Sound/Sound';
+import Image from '../Image/Image';
+
+import ImagePlayer from '../../assets/images/images/risian.png';
 
 import { songs } from '../../assets/appData/songs';
 import { useAudio } from '../../hooks/useAudio';
-import Progress from '../../UI/Progress/Progress';
 
 import styles from './Player.module.scss';
-
 
 function Player() {
     const {
@@ -19,59 +20,57 @@ function Player() {
         playSong,
         pauseSong,
         prevSong,
-        nextSong
+        nextSong,
+        changeTime,
+        changeVolume
     } = useAudio(songs);
     const [song, setSong] = useState(songs[0]);
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
-    const [progressTime, setProgressTime] = useState(0);
 
     function updateProgress(e: any) {
-        setDuration(ref.current.duration)
-        setCurrentTime(ref.current.currentTime)
-        // console.log(ref)
-    }
-
-    function changeTime(seconds:number) {
-        ref.current.currentTime=seconds
+        setDuration(ref.current.duration);
+        setCurrentTime(ref.current.currentTime);
     }
 
     useEffect(() => {
-        setSong(songs[indexSong])
+        setSong(songs[indexSong]);
     }, [indexSong])
 
     useEffect(() => {
         if (isPlaySong) {
-            playSong()
+            playSong();
         }
     }, [song])
 
-    useEffect(() => {
-        // setProgressTime(currentTime * 100 / duration)
-    }, [currentTime])
-
     return (
         <div className={styles['player']}>
-            <div className={styles['player__tools']}>
-                <Button type='prev' callback={prevSong} />
-                <Button type='play' callback={isPlaySong ? pauseSong : playSong} />
-                <Button type='next' callback={nextSong} />
+            <Tools
+                pauseSong={pauseSong}
+                playSong={playSong}
+                prevSong={prevSong}
+                nextSong={nextSong}
+                isPlaySong={isPlaySong}
+            />
+            <div className={styles['player-body']}>
+                <Sound callback={changeVolume} />
+                <h1 className={styles['player-body__title']}>
+                    {song.author} - {song.title}
+                </h1>
+                <audio
+                    ref={ref}
+                    src={song.audio}
+                    onTimeUpdate={updateProgress}
+                    onEnded={nextSong}
+                />
+                {isPlaySong && <Progress
+                    callback={changeTime}
+                    currentProgress={currentTime}
+                    allProgress={duration}
+                    point={false}
+                />}
             </div>
-            <div className={styles['player__body']}>
-                <Sound />
-
-                <div>
-                    <p>{song.author} {song.title}</p>
-                    <audio src={song.audio} ref={ref} onTimeUpdate={(e) => updateProgress(e)} onEnded={nextSong }/>
-                </div>
-                <div className={styles['track']}>
-                    <Progress callback={changeTime} currentProgress={currentTime} point={true} allProgress={duration} />
-                </div>
-            </div>
-
-            <div className={styles['player__img']}>
-                {/* <img src={ImagePlayer} alt="" className={styles['img']}/> */}
-            </div>
+           <Image isPlaySong={isPlaySong}/>
         </div>
     )
 }

@@ -7,7 +7,9 @@ interface AudioInt {
     playSong: () => void,
     pauseSong: () => void,
     prevSong: () => void,
-    nextSong: () => void
+    nextSong: () => void,
+    changeVolume: (seconds: number) => void,
+    changeTime: (volume: number) => void,
 }
 
 export function useAudio(songs: Array<any>): AudioInt {
@@ -16,13 +18,12 @@ export function useAudio(songs: Array<any>): AudioInt {
     const [isPlaySong, setIsPlaySong] = useState<boolean>(false);
 
     function prevSong() {
-
         if (indexSong === 0) {
             setIndexSong(songs.length - 1);
         } else {
             setIndexSong(prev => prev - 1);
         }
-    }
+    };
 
     function nextSong() {
         if (indexSong === songs.length - 1) {
@@ -30,17 +31,35 @@ export function useAudio(songs: Array<any>): AudioInt {
         } else {
             setIndexSong(prev => prev + 1);
         }
-    }
+    };
 
     function playSong() {
         ref.current.play();
         setIsPlaySong(true);
-    }
+    };
 
     function pauseSong() {
         ref.current.pause();
         setIsPlaySong(false);
-    }
+    };
 
-    return { ref, indexSong, isPlaySong, playSong, pauseSong, prevSong, nextSong };
+    function changeTime(seconds: number) {
+        ref.current.currentTime = seconds;
+    };
+
+    function changeVolume(volume: number) {
+        ref.current.volume = volume;
+    };
+
+    return {
+        ref,
+        indexSong,
+        isPlaySong,
+        playSong,
+        pauseSong,
+        prevSong,
+        nextSong,
+        changeTime,
+        changeVolume
+    };
 };

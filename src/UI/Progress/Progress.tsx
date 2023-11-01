@@ -13,14 +13,13 @@ interface IProgress {
 function Progress({ currentProgress, allProgress, point = true, callback = () => { } }: IProgress) {
     const ref = useRef<any>();
     const [progressWidth, setProgressWidth] = useState(0);
-
+    
     const {
         handlerMouseDown,
         handlerMouseleave,
         handlerMouseUp,
         handlerMouseMove
-     }= useDragAndDrop(handleClickProgress)
-
+    } = useDragAndDrop(handleClickProgress);
 
     function getWidth() {
         if (currentProgress === 0) {
@@ -34,9 +33,11 @@ function Progress({ currentProgress, allProgress, point = true, callback = () =>
         const width = ref.current.clientWidth;
         const clickX = e.clientX - ref.current.offsetLeft;
         const currentTimeClick = clickX * allProgress / width;
-
-        setProgressWidth(currentTimeClick * 100 / allProgress);
-        callback(currentTimeClick);
+       
+        if (currentTimeClick >= 0 && currentTimeClick <= allProgress) {
+            setProgressWidth(currentTimeClick * 100 / allProgress);
+            callback(currentTimeClick);
+        }
     }
 
     useEffect(() => {

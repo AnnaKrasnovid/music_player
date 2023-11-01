@@ -7,7 +7,7 @@ export const songs = [
         id: 1,
         audio: AudioOne,
         author: 'Max Richter',
-        title: 'Richter_ Mercy',
+        title: 'Richter Mercy',
         cover:''
     },
     {
