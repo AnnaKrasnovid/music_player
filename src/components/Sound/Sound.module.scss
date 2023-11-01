@@ -6,7 +6,7 @@
 
     &__icon {
         display: block;
-        background-image: url(../../assets/icons/volume-cross.svg);
+        background-image: url(../../assets/images/icons/volume-cross.svg);
         background-repeat: no-repeat;
         background-size: 24px;
         height: 24px;
@@ -14,7 +14,7 @@
 
         &_type {
             &_volume {
-                background-image: url(../../assets/icons/volume-loud.svg);
+                background-image: url(../../assets/images/icons/volume-loud.svg);
             }
         }
     }
