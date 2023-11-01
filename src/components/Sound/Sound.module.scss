@@ -1,0 +1,21 @@
+.sound {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    align-items: center;
+    gap: 6px;
+
+    &__icon {
+        display: block;
+        background-image: url(../../assets/icons/volume-cross.svg);
+        background-repeat: no-repeat;
+        background-size: 24px;
+        height: 24px;
+        width: 24px;
+
+        &_type {
+            &_volume {
+                background-image: url(../../assets/icons/volume-loud.svg);
+            }
+        }
+    }
+}

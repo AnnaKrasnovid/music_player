@@ -1,0 +1,31 @@
+.button {
+    background-color: rgba(12, 182, 115, 0.30);
+    background-repeat: no-repeat;
+    background-size: 32px;
+    background-position: center;
+    border-radius: 50%;   
+    width: 54px;
+    height: 54px;
+
+    &:active {
+        background-color: rgba(12, 182, 115, 0.60);
+    }
+
+    &_type {
+        &_prev {
+            background-image: url(../../assets/icons/rewind-back.svg);
+        }
+
+        &_play {
+            background-image: url(../../assets/icons/pause-stream.svg);
+            background-size: 48px;
+            width: 64px;
+            height: 64px;
+        }
+
+        &_next {
+            background-image: url(../../assets/icons/rewind-back.svg);
+            transform: rotate(180deg);
+        }
+    }
+}
