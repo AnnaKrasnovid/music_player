@@ -1,6 +1,8 @@
+@import '../../assets/styles/variables.scss';
+
 .root {
     margin: 0 auto;
-    background-color: #E3E3E3;
+    background-color: $color-secondary;
     background-image: url(../../assets/images/images/Background.svg);
     background-repeat: no-repeat;
     background-position: right bottom;
@@ -11,15 +13,6 @@
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
-}
-
-.main {
-    max-width: 1380px;
-    margin: 0 auto;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .player-page {

@@ -9,7 +9,7 @@ function Tools({ prevSong, nextSong, pauseSong, playSong, isPlaySong }: ToolsInt
     return (
         <div className={styles['tools']}>
             <Button type='prev' callback={prevSong} />
-            <Button type='play' callback={isPlaySong ? pauseSong : playSong} />
+            <Button type={isPlaySong? 'play': 'pause'} callback={isPlaySong ? pauseSong : playSong} />
             <Button type='next' callback={nextSong} />
         </div>
     )

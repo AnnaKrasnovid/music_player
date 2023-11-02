@@ -1,4 +1,4 @@
-import { ComponentProps, ElementType } from 'react';
+import { ComponentProps, ElementType, ReactNode } from 'react';
 import { SongInt } from "./SongInt";
 
 export interface SoundInt {
@@ -18,7 +18,7 @@ export interface ToolsInt {
 }
 
 export interface ButtonInt {
-    type: 'prev' | 'play' | 'next',
+    type: 'prev' | 'play' | 'pause' | 'next',
     callback: () => void
 }
 
@@ -36,4 +36,8 @@ export interface PlayerBodyInt {
     duration: number,
     changeVolume: (seconds: number) => void,
     changeTime: (volume: number) => void,
+}
+
+export interface LayoutInt {
+    children: ReactNode
 }

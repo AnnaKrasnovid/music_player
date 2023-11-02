@@ -1,15 +1,17 @@
+@import '../../assets/styles/variables.scss';
+
 .button {
-    background-color: rgba(12, 182, 115, 0.30);
+    background-color: $color-primary;
     background-repeat: no-repeat;
     background-size: 32px;
     background-position: center;
-    border-radius: 50%;   
+    border-radius: 50%;
     width: 54px;
     height: 54px;
     cursor: pointer;
 
     &:active {
-        background-color: rgba(12, 182, 115, 0.60);
+        background-color: $color-primary-active;
     }
 
     &_type {
@@ -20,6 +22,12 @@
         &_play {
             background-image: url(../../assets/images/icons/pause-stream.svg);
             background-size: 48px;
+            width: 64px;
+            height: 64px;
+        }
+
+        &_pause {
+            background-image: url(../../assets/images/icons/pause.svg);
             width: 64px;
             height: 64px;
         }

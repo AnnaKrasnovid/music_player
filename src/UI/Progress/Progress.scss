@@ -1,23 +1,21 @@
+@import '../../assets/styles/variables.scss';
+
 .progress {
     width: 100%;
     height: 6px;
     display: flex;
-    // padding: 0 7px;
 
     &__progress {
-        background-color: #05AC6A;
+        background-color: $color-green;
         height: 6px;
         position: relative;
-        // transition: width 1s linear;
 
         &_type_point {
-
             &::after {
                 content: '';
                 height: 12px;
                 width: 12px;
-                background-color: #05AC6A;
-                ;
+                background-color: $color-green;                
                 position: absolute;
                 right: -2px;
                 top: -3px;
@@ -28,7 +26,7 @@
     }
 
     &__container {
-        background-color: #C5C6C5;
+        background-color: $color-middle-gray;
         height: 6px;
         width: 100%;
         transition: none;

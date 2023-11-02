@@ -1,15 +1,17 @@
 import Player from '../Player/Player';
 
+import Layout from '../Layout/Layout';
+
 import styles from './App.module.scss';
 
 function App() {
   return (
     <div className={styles['root']}>
-      <main className={styles['main']}>
+      <Layout>
         <div className={styles['player-page']}>
           <Player />
         </div>
-      </main>
+      </Layout>
     </div>
   );
 };

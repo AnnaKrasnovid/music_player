@@ -1,3 +1,5 @@
+@import '../../assets/styles/variables.scss';
+
 .player-body {
     max-width: 342px;
     display: flex;
@@ -9,7 +11,7 @@
     background-size: contain;
 
     &__title {
-        color: #000;
+        color: $color-black;
         text-align: center;
         font-size: 24px;
         font-weight: 300;
