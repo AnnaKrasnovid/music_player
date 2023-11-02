@@ -27,7 +27,6 @@
 ```
 git clone https://github.com/AnnaKrasnovid/music_player.git
 ```
-```
 Устанавливаем зависимости:
 ```
 npm install
