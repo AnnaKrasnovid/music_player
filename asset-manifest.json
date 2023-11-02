@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/music_player/static/css/main.ff4dab03.css",
+    "main.css": "/music_player/static/css/main.13618608.css",
     "main.js": "/music_player/static/js/main.5946496a.js",
     "static/media/Max Richter Richter_ Mercy (Voiceless Mix).mp3": "/music_player/static/media/Max Richter Richter_ Mercy (Voiceless Mix).6e5d8e081127f8377a36.mp3",
     "static/media/Max Richter Whispers.mp3": "/music_player/static/media/Max Richter Whispers.65f5269bb14efc7ddd55.mp3",
@@ -13,11 +13,12 @@
     "index.html": "/music_player/index.html",
     "static/media/rewind-back.svg": "/music_player/static/media/rewind-back.7a4ca3fadf41f1525b51.svg",
     "static/media/Background.svg": "/music_player/static/media/Background.9b19e7e3adbeaf3b98a6.svg",
-    "main.ff4dab03.css.map": "/music_player/static/css/main.ff4dab03.css.map",
+    "static/media/Logo.svg": "/music_player/static/media/Logo.c0ea71d297c2e5b09b0b.svg",
+    "main.13618608.css.map": "/music_player/static/css/main.13618608.css.map",
     "main.5946496a.js.map": "/music_player/static/js/main.5946496a.js.map"
   },
   "entrypoints": [
-    "static/css/main.ff4dab03.css",
+    "static/css/main.13618608.css",
     "static/js/main.5946496a.js"
   ]
 }
