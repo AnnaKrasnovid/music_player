@@ -1,19 +1,19 @@
 import { memo } from 'react';
-import ImagePlayer from '../../assets/images/images/risian.png';
+import ImagePlayer from '../../assets/images/images/308472811143211.png';
 
 import { ImageInt } from '../../types/ComponentsInt';
 
 import styles from './Image.module.scss';
 
-function Image({ isPlaySong }: ImageInt) {
+function Image({ isPlaySong, cover }: ImageInt) {
     return (
-        <div className={styles['player-img']}>
+        <div className={styles['cover']}>
             <img
-                src={ImagePlayer}
+                src={cover? cover:ImagePlayer}
                 alt="Пластинка"
                 className={`
-                    ${styles['img']} 
-                    ${isPlaySong ? styles['img_active'] : ''}
+                    ${styles['cover__img']} 
+                    // ${isPlaySong ? styles['cover__image_active'] : ''}
                 `}
             />
         </div>

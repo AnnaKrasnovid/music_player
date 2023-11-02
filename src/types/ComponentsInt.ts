@@ -6,7 +6,8 @@ export interface SoundInt {
 }
 
 export interface ImageInt {
-    isPlaySong: boolean
+    isPlaySong: boolean,
+    cover?: string |undefined
 }
 
 export interface ToolsInt {
@@ -14,11 +15,12 @@ export interface ToolsInt {
     nextSong: () => void,
     pauseSong: () => void,
     playSong: () => void,
-    isPlaySong: boolean
+    isPlaySong: boolean,
+    currentTime: number
 }
 
 export interface ButtonInt {
-    type: 'prev' | 'play' | 'pause' | 'next',
+    type: 'prev' | 'play' | 'pause' | 'next' | 'volume' | 'arrows',
     callback: () => void
 }
 
@@ -31,13 +33,15 @@ export interface ProgressInt {
 
 export interface PlayerBodyInt {
     song: SongInt,
-    isPlaySong: boolean,
-    currentTime: number,
-    duration: number,
     changeVolume: (seconds: number) => void,
-    changeTime: (volume: number) => void,
 }
 
 export interface LayoutInt {
     children: ReactNode
+}
+
+export interface AudioTrackInt {
+    currentTime: number,
+    duration: number,
+    changeTime: (volume: number) => void,
 }

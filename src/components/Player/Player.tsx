@@ -1,10 +1,10 @@
 import { memo, useCallback, useEffect, useState } from 'react';
 
 import Tools from '../Tools/Tools';
-import PlayerBody from '../PlayerBody/PlayerBody';
 import Progress from '../../UI/Progress/Progress';
 import Sound from '../Sound/Sound';
 import Image from '../Image/Image';
+import AudioTrack from '../AudioTrack/AudioTrack';
 
 import { songs } from '../../assets/appData/songs';
 import { useAudio } from '../../hooks/useAudio';
@@ -49,34 +49,35 @@ function Player() {
 
     return (
         <div className={styles['player']}>
+            <audio
+                ref={ref}
+                src={song.audio}
+                onTimeUpdate={updateProgress}
+                onEnded={nextSong}
+            />
+            <Image isPlaySong={isPlaySong}  cover={song.cover}/>
+            <div>
+                <h1 className={styles['title']}>
+                    {song.author}
+                </h1>
+                <p>{song.title}</p>
+            </div>
+
+            <AudioTrack
+                duration={duration}
+                currentTime={currentTime}
+                changeTime={changeTime}
+            />
             <Tools
                 pauseSong={pauseSong}
                 playSong={playSong}
                 prevSong={prevSong}
                 nextSong={nextSong}
                 isPlaySong={isPlaySong}
+                currentTime={currentTime}
             />
-            {
-                songs.length > 0
-                    ? <>
-                        <audio
-                            ref={ref}
-                            src={song.audio}
-                            onTimeUpdate={updateProgress}
-                            onEnded={nextSong}
-                        />
-                        <PlayerBody
-                            song={song}
-                            isPlaySong={isPlaySong}
-                            currentTime={currentTime}
-                            duration={duration}
-                            changeVolume={changeVolume}
-                            changeTime={changeTime}
-                        />
-                    </>
-                    : <p>В плейлисте нет песен</p>
-            }
-            <Image isPlaySong={isPlaySong} />
+            {/* <Sound callback={changeVolume} /> */}
+
         </div>
     )
 };

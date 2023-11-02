@@ -3,6 +3,8 @@ import AudioTwo from '../audio/allthat.mp3';
 import AudioThree from '../audio/elevate.mp3';
 import AudioFour from '../audio/hey.mp3';
 
+import Img from '../images/covers/adele.jpg'
+
 import { SongInt } from '../../types/SongInt';
 
 export const songs: Array<SongInt> = [  
@@ -11,7 +13,7 @@ export const songs: Array<SongInt> = [
         audio: AudioOne,
         author: 'Benjamin Tissot',
         title: 'Adventure',
-        cover: ''
+        cover: Img
     },
     {
         id: 2,

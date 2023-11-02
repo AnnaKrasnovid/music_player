@@ -1,0 +1,21 @@
+.audio {
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    gap: 16px;
+    align-items: center;
+
+    &__time {
+
+        font-size: 16px;
+
+        &_type {
+
+            justify-self: start;
+
+            &_duration {
+
+                justify-self: end;
+            }
+        }
+    }
+}

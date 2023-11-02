@@ -1,40 +1,46 @@
 @import '../../assets/styles/variables.scss';
 
 .button {
-    background-color: $color-primary;
+    // background-color: $color-primary;
     background-repeat: no-repeat;
     background-size: 32px;
     background-position: center;
     border-radius: 50%;
-    width: 54px;
-    height: 54px;
+    width: 64px;
+    height: 64px;
     cursor: pointer;
-
-    &:active {
-        background-color: $color-primary-active;
+    transition: all 0.3s linear;
+    &:hover {
+        box-shadow : 0px 7px 16px rgba(0, 0, 0, 0.7);
+       transition: all 0.3s linear;
     }
 
     &_type {
         &_prev {
             background-image: url(../../assets/images/icons/rewind-back.svg);
+            transform: rotate(180deg);
         }
 
         &_play {
-            background-image: url(../../assets/images/icons/pause-stream.svg);
-            background-size: 48px;
-            width: 64px;
-            height: 64px;
+            background-image: url(../../assets/images/icons/pause-stream.svg);   
         }
 
         &_pause {
             background-image: url(../../assets/images/icons/pause.svg);
-            width: 64px;
-            height: 64px;
         }
 
         &_next {
-            background-image: url(../../assets/images/icons/rewind-back.svg);
-            transform: rotate(180deg);
+            background-image: url(../../assets/images/icons/rewind-back.svg);          
+        }
+        &_volume {
+            background-image: url(../../assets/images/icons/volume-loud.svg);  
+            background-size:30px;    
+            opacity: 0.6; 
+        }
+        &_arrows {
+            background-image: url(../../assets/images/icons/arrows.svg);   
+           background-size:36px; 
+           opacity: 0.6; 
         }
     }
 }
