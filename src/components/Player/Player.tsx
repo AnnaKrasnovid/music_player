@@ -56,20 +56,26 @@ function Player() {
                 nextSong={nextSong}
                 isPlaySong={isPlaySong}
             />
-            <audio
-                ref={ref}
-                src={song.audio}
-                onTimeUpdate={updateProgress}
-                onEnded={nextSong}
-            />
-            <PlayerBody
-                song={song}
-                isPlaySong={isPlaySong}
-                currentTime={currentTime}
-                duration={duration}
-                changeVolume={changeVolume}
-                changeTime={changeTime}
-            />         
+            {
+                songs.length > 0
+                    ? <>
+                        <audio
+                            ref={ref}
+                            src={song.audio}
+                            onTimeUpdate={updateProgress}
+                            onEnded={nextSong}
+                        />
+                        <PlayerBody
+                            song={song}
+                            isPlaySong={isPlaySong}
+                            currentTime={currentTime}
+                            duration={duration}
+                            changeVolume={changeVolume}
+                            changeTime={changeTime}
+                        />
+                    </>
+                    : <p>В плейлисте нет песен</p>
+            }
             <Image isPlaySong={isPlaySong} />
         </div>
     )

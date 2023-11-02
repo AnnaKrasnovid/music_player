@@ -4,7 +4,6 @@ import { ButtonInt } from '../../types/ComponentsInt';
 import styles from './Button.module.scss';
 
 function Button({type, callback}:ButtonInt) {
-    console.log('render')
     return(
         <button
          type='button' 
