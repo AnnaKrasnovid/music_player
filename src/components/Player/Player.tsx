@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 
 import Tools from '../Tools/Tools';
+import PlayerBody from '../PlayerBody/PlayerBody';
 import Progress from '../../UI/Progress/Progress';
 import Sound from '../Sound/Sound';
 import Image from '../Image/Image';
-
-import ImagePlayer from '../../assets/images/images/risian.png';
 
 import { songs } from '../../assets/appData/songs';
 import { useAudio } from '../../hooks/useAudio';
@@ -13,6 +12,7 @@ import { useAudio } from '../../hooks/useAudio';
 import styles from './Player.module.scss';
 
 function Player() {
+
     const {
         ref,
         isPlaySong,
@@ -28,20 +28,24 @@ function Player() {
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
 
-    function updateProgress(e: any) {
+    const updateProgress = () => {
         setDuration(ref.current.duration);
         setCurrentTime(ref.current.currentTime);
-    }
+    };
+
+    const playNewSong = useCallback(() => {
+        setSong(songs[indexSong])
+    }, [indexSong])
 
     useEffect(() => {
-        setSong(songs[indexSong]);
-    }, [indexSong])
+        playNewSong()
+    }, [indexSong, playNewSong])
 
     useEffect(() => {
         if (isPlaySong) {
             playSong();
         }
-    }, [song])
+    }, [song, isPlaySong])
 
     return (
         <div className={styles['player']}>
@@ -52,27 +56,23 @@ function Player() {
                 nextSong={nextSong}
                 isPlaySong={isPlaySong}
             />
-            <div className={styles['player-body']}>
-                <Sound callback={changeVolume} />
-                <h1 className={styles['player-body__title']}>
-                    {song.author} - {song.title}
-                </h1>
-                <audio
-                    ref={ref}
-                    src={song.audio}
-                    onTimeUpdate={updateProgress}
-                    onEnded={nextSong}
-                />
-                {isPlaySong && <Progress
-                    callback={changeTime}
-                    currentProgress={currentTime}
-                    allProgress={duration}
-                    point={false}
-                />}
-            </div>
-           <Image isPlaySong={isPlaySong}/>
+            <audio
+                ref={ref}
+                src={song.audio}
+                onTimeUpdate={updateProgress}
+                onEnded={nextSong}
+            />
+            <PlayerBody
+                song={song}
+                isPlaySong={isPlaySong}
+                currentTime={currentTime}
+                duration={duration}
+                changeVolume={changeVolume}
+                changeTime={changeTime}
+            />         
+            <Image isPlaySong={isPlaySong} />
         </div>
     )
-}
+};
 
-export default Player;
+export default memo(Player);

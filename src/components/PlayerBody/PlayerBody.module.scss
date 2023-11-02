@@ -1,0 +1,14 @@
+.player-body {
+    max-width: 342px;
+    display: flex;
+    flex-direction: column;
+    padding: 21px 0 31px;
+
+    &__title {
+        color: #000;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 300;
+        padding: 20px 0 30px;
+    }
+}

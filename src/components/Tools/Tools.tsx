@@ -1,14 +1,9 @@
+import { memo } from 'react';
 import Button from '../../UI/Button/Button';
 
-import styles from './Tools.module.scss';
+import { ToolsInt } from '../../types/ComponentsInt';
 
-interface ToolsInt {
-    prevSong: () => void,
-    nextSong: () => void,
-    pauseSong: () => void,
-    playSong: () => void,
-    isPlaySong: boolean
-}
+import styles from './Tools.module.scss';
 
 function Tools({ prevSong, nextSong, pauseSong, playSong, isPlaySong }: ToolsInt) {
     return (
@@ -18,6 +13,6 @@ function Tools({ prevSong, nextSong, pauseSong, playSong, isPlaySong }: ToolsInt
             <Button type='next' callback={nextSong} />
         </div>
     )
-}
+};
 
-export default Tools;
+export default memo(Tools);

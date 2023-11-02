@@ -1,9 +1,16 @@
 .root {
+    margin: 0 auto;
     background-color: #E3E3E3;
     background-image: url(../../assets/images/images/Background.svg);
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: cover;
+    font-family: 'Roboto', Arial, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
 }
 
 .main {

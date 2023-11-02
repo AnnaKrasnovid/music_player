@@ -1,19 +1,19 @@
-import { useEffect, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
 
 import { useDragAndDrop } from '../../hooks/useDragAndDrop';
+import { ProgressInt } from '../../types/ComponentsInt';
+
 import './Progress.scss';
 
-interface IProgress {
-    point?: boolean,
-    callback?: (progress: number) => void,
-    currentProgress: number,// текущая длинна прогресс бара, пересчитается в %
-    allProgress: number // вся длинна прогресс бара, пересчитается в %
-}
+function Progress({
+    currentProgress,
+    allProgress,
+    point = true,
+    callback = () => { }
+}: ProgressInt) {
 
-function Progress({ currentProgress, allProgress, point = true, callback = () => { } }: IProgress) {
     const ref = useRef<any>();
     const [progressWidth, setProgressWidth] = useState(0);
-    
     const {
         handlerMouseDown,
         handlerMouseleave,
@@ -21,24 +21,24 @@ function Progress({ currentProgress, allProgress, point = true, callback = () =>
         handlerMouseMove
     } = useDragAndDrop(handleClickProgress);
 
-    function getWidth() {
+    const getWidth = useCallback(() => {
         if (currentProgress === 0) {
             setProgressWidth(0);
         } else {
             setProgressWidth(currentProgress * 100 / allProgress);
         }
-    }
+    }, [currentProgress]);
 
     function handleClickProgress(e: any) {
         const width = ref.current.clientWidth;
         const clickX = e.clientX - ref.current.offsetLeft;
         const currentTimeClick = clickX * allProgress / width;
-       
+
         if (currentTimeClick >= 0 && currentTimeClick <= allProgress) {
             setProgressWidth(currentTimeClick * 100 / allProgress);
             callback(currentTimeClick);
         }
-    }
+    };
 
     useEffect(() => {
         getWidth();
@@ -63,4 +63,4 @@ function Progress({ currentProgress, allProgress, point = true, callback = () =>
     );
 }
 
-export default Progress;
+export default memo(Progress);

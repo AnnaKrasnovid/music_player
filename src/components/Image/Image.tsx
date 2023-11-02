@@ -1,10 +1,9 @@
+import { memo } from 'react';
 import ImagePlayer from '../../assets/images/images/risian.png';
 
-import styles from './Image.module.scss';
+import { ImageInt } from '../../types/ComponentsInt';
 
-interface ImageInt {
-    isPlaySong: boolean
-}
+import styles from './Image.module.scss';
 
 function Image({ isPlaySong }: ImageInt) {
     return (
@@ -19,6 +18,6 @@ function Image({ isPlaySong }: ImageInt) {
             />
         </div>
     )
-}
+};
 
-export default Image;
+export default memo(Image);

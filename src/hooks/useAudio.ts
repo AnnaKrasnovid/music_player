@@ -1,55 +1,54 @@
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
-interface AudioInt {
-    ref: any,
-    indexSong: number,
-    isPlaySong: boolean,
-    playSong: () => void,
-    pauseSong: () => void,
-    prevSong: () => void,
-    nextSong: () => void,
-    changeVolume: (seconds: number) => void,
-    changeTime: (volume: number) => void,
-}
+import { AudioInt } from '../types/AudioInt';
+import { SongInt } from '../types/SongInt';
 
-export function useAudio(songs: Array<any>): AudioInt {
-    const ref = useRef<any>();
-    const [indexSong, setIndexSong] = useState(0);
+export function useAudio(songs: Array<SongInt>): AudioInt {
+    const ref = useRef<HTMLAudioElement>();
+    const [indexSong, setIndexSong] = useState<number>(0);
     const [isPlaySong, setIsPlaySong] = useState<boolean>(false);
 
-    function prevSong() {
+    const prevSong = useCallback(() => {
         if (indexSong === 0) {
             setIndexSong(songs.length - 1);
         } else {
             setIndexSong(prev => prev - 1);
         }
-    };
+    }, [indexSong]);
 
-    function nextSong() {
+    const nextSong = useCallback(() => {
         if (indexSong === songs.length - 1) {
             setIndexSong(0);
         } else {
             setIndexSong(prev => prev + 1);
         }
-    };
+    }, [indexSong]);
 
-    function playSong() {
-        ref.current.play();
-        setIsPlaySong(true);
-    };
+    const playSong = useCallback(() => {
+        if (ref.current) {
+            ref.current.play();
+            setIsPlaySong(true);
+        }
+    }, []);
 
-    function pauseSong() {
-        ref.current.pause();
-        setIsPlaySong(false);
-    };
+    const pauseSong = useCallback(() => {
+        if (ref.current) {
+            ref.current.pause();
+            setIsPlaySong(false);
+        }
+    }, []);
 
-    function changeTime(seconds: number) {
-        ref.current.currentTime = seconds;
-    };
+    const changeTime = useCallback((seconds: number) => {
+        if (ref.current) {
+            ref.current.currentTime = seconds;
+        }
+    }, []);
 
-    function changeVolume(volume: number) {
-        ref.current.volume = volume;
-    };
+    const changeVolume = useCallback((volume: number) => {
+        if (ref.current) {
+            ref.current.volume = volume;
+        }
+    }, []);
 
     return {
         ref,

@@ -1,11 +1,10 @@
+import { memo } from 'react';
+import { ButtonInt } from '../../types/ComponentsInt';
+
 import styles from './Button.module.scss';
 
-interface ButtonInt {
-    type: 'prev'| 'play'| 'next', 
-    callback: ()=> void
-}
-
 function Button({type, callback}:ButtonInt) {
+    console.log('render')
     return(
         <button
          type='button' 
@@ -16,4 +15,4 @@ function Button({type, callback}:ButtonInt) {
     )
 };
 
-export default Button;
+export default memo(Button);
