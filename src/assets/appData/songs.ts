@@ -1,29 +1,37 @@
-import AudioOne from '../audio/Max Richter Richter_ Mercy (Voiceless Mix).mp3';
-import AudioTwo from '../audio/Max Richter The Days Go By.mp3';
-import AudioThree from '../audio/Max Richter Whispers.mp3';
+import AudioOne from '../audio/adventure.mp3';
+import AudioTwo from '../audio/allthat.mp3';
+import AudioThree from '../audio/elevate.mp3';
+import AudioFour from '../audio/hey.mp3';
 
 import { SongInt } from '../../types/SongInt';
 
-export const songs: Array<SongInt> = [
+export const songs: Array<SongInt> = [  
     {
         id: 1,
         audio: AudioOne,
-        author: 'Max Richter',
-        title: 'Richter Mercy',
+        author: 'Benjamin Tissot',
+        title: 'Adventure',
         cover: ''
     },
     {
         id: 2,
         audio: AudioTwo,
-        author: 'Max Richter',
-        title: 'The Days Go By',
+        author: 'Benjamin Tissot',
+        title: 'Allthat',
         cover: '',
     },
     {
         id: 3,
         audio: AudioThree,
-        author: 'Max Richter',
-        title: 'Whispers',
+        author: 'Benjamin Tissot',
+        title: 'Elevate',
+        cover: ''
+    },
+    {
+        id: 4,
+        audio: AudioFour,
+        author: 'Benjamin Tissot',
+        title: 'Hey',
         cover: ''
     },
 ]
