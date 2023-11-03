@@ -1,8 +1,30 @@
+@import '../../assets/styles/variables.scss';
+
 .main {
-    max-width: 1380px;
+   
     margin: 0 auto;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+   
+}
+
+.player-page {
+    max-width: 1380px;
+    width: 100%;
+   display: flex;
+
+    &__container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 50px;
+    }
+}
+
+@media(max-width: 1480px) {
+    .main {
+    margin: 0 5%;
+    }
 }

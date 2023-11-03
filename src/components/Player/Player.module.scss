@@ -3,20 +3,15 @@
 .player {
     padding: 36px 24px 48px;
     max-width: 480px;
-    min-height: 200px;
     width: 100%;
-    border-radius: 8px;
-    box-shadow: $box-shadow;   
+    min-height: 200px;
     display: flex;
-    flex-direction: column; 
-     gap: 24px;  
-    box-shadow: $box-shadow;  
-    border-radius: 24px;
+    flex-direction: column;
+    gap: 24px;
 
     &__box {
         display: grid;
         grid-template-columns: 0.7fr 0.3fr;
+
     }
 }
-
-

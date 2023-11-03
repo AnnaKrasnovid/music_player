@@ -1,4 +1,5 @@
-import { memo, useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import Tools from '../Tools/Tools';
 import Sound from '../Sound/Sound';
@@ -6,12 +7,15 @@ import Image from '../Image/Image';
 import AudioTrack from '../AudioTrack/AudioTrack';
 import HeadingSong from '../HeadingSong/HeadingSong';
 
-import { songs } from '../../assets/appData/songs';
 import { useAudio } from '../../hooks/useAudio';
+import { useActions } from '../../hooks/useActions';
 
 import styles from './Player.module.scss';
 
 function Player() {
+    const { switchSong, getDuration, updateCurrentTime } = useActions();
+    const { songs } = useSelector((state: any) => state.songs);
+    const { activeSong } = useSelector((state: any) => state.activeSong);
 
     const {
         ref,
@@ -22,21 +26,22 @@ function Player() {
         prevSong,
         nextSong,
         changeTime,
-        changeVolume
+        changeVolume,
     } = useAudio(songs);
-   
-    const [song, setSong] = useState(songs[0]);
-    const [duration, setDuration] = useState(0);
-    const [currentTime, setCurrentTime] = useState(0);
 
     const updateProgress = () => {
-        setDuration(ref.current.duration);
-        setCurrentTime(ref.current.currentTime);
+        updateCurrentTime({ currentTime: ref.current.currentTime })
     };
 
     const playNewSong = useCallback(() => {
-        setSong(songs[indexSong])
+        switchSong({ song: songs[indexSong] })
     }, [indexSong])
+
+    const getSongDuration = () => {
+        if (ref.current) {
+            getDuration({ duration: ref.current.duration });
+        }
+    }
 
     useEffect(() => {
         playNewSong()
@@ -46,48 +51,36 @@ function Player() {
         if (isPlaySong) {
             playSong();
         }
-    }, [song, isPlaySong])
+    }, [activeSong, isPlaySong])
 
     return (
-        <div className={styles['player']}>
-            <audio
-                ref={ref}
-                src={song.audio}
-                onTimeUpdate={updateProgress}
-                onEnded={nextSong}
-            />
-            <Image
-                isPlaySong={isPlaySong}
-                cover={song.cover}
-            />
+        <div className={`container ${styles['player']}`}>
+            {activeSong &&
+                <>
+                    <audio
+                        ref={ref}
+                        src={activeSong.audio}
+                        onLoadedMetadata={getSongDuration}
+                        onTimeUpdate={updateProgress}
+                        onEnded={nextSong}
+                    />
+                    <Image isPlaySong={isPlaySong} />
 
-          
-            
-          <div className={styles['player__box']}>
-          <HeadingSong
-                author={song.author}
-                title={song.title}
-            />
-          <Sound callback={changeVolume} />
-          </div>
-                
-            
+                    <div className={styles['player__box']}>
+                        <HeadingSong />
+                        <Sound callback={changeVolume} />
+                    </div>
 
-            <Tools
-                pauseSong={pauseSong}
-                playSong={playSong}
-                prevSong={prevSong}
-                nextSong={nextSong}
-                isPlaySong={isPlaySong}
-                currentTime={currentTime}
-            />
-            <AudioTrack
-                duration={duration}
-                currentTime={currentTime}
-                changeTime={changeTime}
-            />
-
-
+                    <Tools
+                        pauseSong={pauseSong}
+                        playSong={playSong}
+                        prevSong={prevSong}
+                        nextSong={nextSong}
+                        isPlaySong={isPlaySong}
+                    />
+                    <AudioTrack changeTime={changeTime} />
+                </>
+            }
         </div>
     )
 };

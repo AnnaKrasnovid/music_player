@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useSelector } from 'react-redux';
 
 import Progress from '../../UI/Progress/Progress';
 
@@ -6,8 +7,8 @@ import { AudioTrackInt } from '../../types/ComponentsInt';
 
 import styles from './AudioTrack.module.scss';
 
-function AudioTrack({ duration, currentTime, changeTime }: AudioTrackInt) {
-console.log(Math.round(currentTime))
+function AudioTrack({  changeTime }: AudioTrackInt) {
+    const {  duration, currentTime } = useSelector((state: any) => state.activeSong);
     return (
         <div className={styles['audio']}>
             <p className={styles['audio__time']}>00:{Math.round(currentTime)}</p>

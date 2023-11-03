@@ -30,10 +30,15 @@ function Progress({
     }, [currentProgress]);
 
     function handleClickProgress(e: any) {
-        const width = ref.current.clientWidth;
-        const clickX = e.clientX - ref.current.offsetLeft;
-        const currentTimeClick = clickX * allProgress / width;
+        // const width = ref.current.clientWidth;
+        // const clickX = e.clientX - ref.current.offsetLeft;
+        // const currentTimeClick = clickX * allProgress / width;
 
+        const element=ref.current.getBoundingClientRect()
+        const width=element.width
+        const clickX = e.clientX - element.left;
+        const currentTimeClick = clickX * allProgress / width;
+        
         if (currentTimeClick >= 0 && currentTimeClick <= allProgress) {
             setProgressWidth(currentTimeClick * 100 / allProgress);
             callback(currentTimeClick);

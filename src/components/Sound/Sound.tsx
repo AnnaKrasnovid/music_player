@@ -10,10 +10,9 @@ function Sound({ callback }: SoundInt) {
         <div className={styles['sound']}>
             <div className={styles['sound__box']}>
                 {/* <span className={styles['sound__icon']} /> */}
-                <Progress callback={callback} currentProgress={0.7} allProgress={1} />
+                <Progress callback={callback} currentProgress={0.5} allProgress={1} />
                 {/* <span className={`${styles['sound__icon']} ${styles['sound__icon_type_volume']}`} /> */}
             </div>
-
         </div>
     )
 };

@@ -1,18 +1,17 @@
-import Player from '../Player/Player';
+import { Provider } from 'react-redux';
+import store from '../../store/index';
 
-import Layout from '../Layout/Layout';
+import PlayList from '../../pages/PlayList';
 
 import styles from './App.module.scss';
 
 function App() {
   return (
-    <div className={styles['root']}>
-      <Layout>
-        <div className={styles['player-page']}>
-          <Player />
-        </div>
-      </Layout>
-    </div>
+    <Provider store={store}>
+      <div className={styles['root']}>
+        <PlayList />
+      </div>
+    </Provider>
   );
 };
 

@@ -17,6 +17,7 @@ export function useAudio(songs: Array<SongInt>): AudioInt {
     }, [indexSong]);
 
     const nextSong = useCallback(() => {
+        console.log(songs.length)
         if (indexSong === songs.length - 1) {
             setIndexSong(0);
         } else {
@@ -49,7 +50,7 @@ export function useAudio(songs: Array<SongInt>): AudioInt {
             ref.current.volume = volume;
         }
     }, []);
-
+    
     return {
         ref,
         indexSong,
@@ -59,6 +60,6 @@ export function useAudio(songs: Array<SongInt>): AudioInt {
         prevSong,
         nextSong,
         changeTime,
-        changeVolume
+        changeVolume,
     };
 };

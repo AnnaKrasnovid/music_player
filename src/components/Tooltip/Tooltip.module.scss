@@ -18,7 +18,7 @@
     visibility: hidden;
     opacity: 0;
     transition: visibility .5s linear, opacity .5s linear;
-    position: absolute;
+    // position: absolute;
     &_active {
         visibility: visible;
         opacity: 1;

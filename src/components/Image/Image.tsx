@@ -1,15 +1,19 @@
 import { memo } from 'react';
-import ImagePlayer from '../../assets/images/images/308472811143211.png';
+import { useSelector } from 'react-redux';
+
+import ImagePlayer from '../../assets/images/images/cover.png';
 
 import { ImageInt } from '../../types/ComponentsInt';
 
 import styles from './Image.module.scss';
 
-function Image({ isPlaySong, cover }: ImageInt) {
+function Image({ isPlaySong }: ImageInt) {
+    const { activeSong } = useSelector((state: any) => state.activeSong);
+
     return (
         <div className={styles['cover']}>
             <img
-                src={cover? cover:ImagePlayer}
+                src={activeSong.cover ? activeSong.cover : ImagePlayer}
                 alt="Пластинка"
                 className={`
                     ${styles['cover__img']} 

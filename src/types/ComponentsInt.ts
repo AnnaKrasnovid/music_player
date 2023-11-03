@@ -6,8 +6,7 @@ export interface SoundInt {
 }
 
 export interface ImageInt {
-    isPlaySong: boolean,
-    cover?: string |undefined
+    isPlaySong: boolean,   
 }
 
 export interface ToolsInt {
@@ -16,7 +15,6 @@ export interface ToolsInt {
     pauseSong: () => void,
     playSong: () => void,
     isPlaySong: boolean,
-    currentTime: number
 }
 
 export interface ButtonInt {
@@ -41,7 +39,5 @@ export interface LayoutInt {
 }
 
 export interface AudioTrackInt {
-    currentTime: number,
-    duration: number,
     changeTime: (volume: number) => void,
 }

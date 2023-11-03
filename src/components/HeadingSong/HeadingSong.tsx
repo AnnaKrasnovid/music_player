@@ -1,20 +1,17 @@
 import { memo } from 'react';
+import { useSelector } from 'react-redux';
 
 import styles from './HeadingSong.module.scss';
 
-interface HeadingSongInt {
-    author: string,
-    title: string,
-}
-
-function HeadingSong({author, title}: HeadingSongInt) {
+function HeadingSong() {
+    const { activeSong } = useSelector((state: any) => state.activeSong);
 
     return (
         <div className={styles['heading']}>
             <h1 className={styles['heading__name']}>
-                {author}
+                {activeSong.author}
             </h1>
-            <p className={styles['heading__title']}>{title}</p>
+            <p className={styles['heading__title']}>{activeSong.title}</p>
         </div>
     )
 };

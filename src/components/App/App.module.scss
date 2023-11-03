@@ -1,20 +1,8 @@
 @import '../../assets/styles/variables.scss';
 
 .root {
-    margin: 0 auto;   
-    font-family: 'Roboto', Arial, sans-serif;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    backdrop-filter: blur(20px);
-    background-color: $color-dark;
-    color: $color-white;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.10);
+    backdrop-filter: blur(10px);
 }
 
-.player-page {
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    width: 100%;
-}
