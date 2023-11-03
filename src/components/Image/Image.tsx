@@ -13,7 +13,7 @@ function Image({ isPlaySong, cover }: ImageInt) {
                 alt="Пластинка"
                 className={`
                     ${styles['cover__img']} 
-                    // ${isPlaySong ? styles['cover__image_active'] : ''}
+                    ${isPlaySong ? styles['cover__image_active'] : ''}
                 `}
             />
         </div>

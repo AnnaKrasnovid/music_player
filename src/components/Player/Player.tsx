@@ -1,10 +1,10 @@
 import { memo, useCallback, useEffect, useState } from 'react';
 
 import Tools from '../Tools/Tools';
-import Progress from '../../UI/Progress/Progress';
 import Sound from '../Sound/Sound';
 import Image from '../Image/Image';
 import AudioTrack from '../AudioTrack/AudioTrack';
+import HeadingSong from '../HeadingSong/HeadingSong';
 
 import { songs } from '../../assets/appData/songs';
 import { useAudio } from '../../hooks/useAudio';
@@ -24,6 +24,7 @@ function Player() {
         changeTime,
         changeVolume
     } = useAudio(songs);
+   
     const [song, setSong] = useState(songs[0]);
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
@@ -55,19 +56,23 @@ function Player() {
                 onTimeUpdate={updateProgress}
                 onEnded={nextSong}
             />
-            <Image isPlaySong={isPlaySong}  cover={song.cover}/>
-            <div>
-                <h1 className={styles['title']}>
-                    {song.author}
-                </h1>
-                <p>{song.title}</p>
-            </div>
-
-            <AudioTrack
-                duration={duration}
-                currentTime={currentTime}
-                changeTime={changeTime}
+            <Image
+                isPlaySong={isPlaySong}
+                cover={song.cover}
             />
+
+          
+            
+          <div className={styles['player__box']}>
+          <HeadingSong
+                author={song.author}
+                title={song.title}
+            />
+          <Sound callback={changeVolume} />
+          </div>
+                
+            
+
             <Tools
                 pauseSong={pauseSong}
                 playSong={playSong}
@@ -76,7 +81,12 @@ function Player() {
                 isPlaySong={isPlaySong}
                 currentTime={currentTime}
             />
-            {/* <Sound callback={changeVolume} /> */}
+            <AudioTrack
+                duration={duration}
+                currentTime={currentTime}
+                changeTime={changeTime}
+            />
+
 
         </div>
     )

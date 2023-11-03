@@ -45,17 +45,23 @@ function Progress({
     }, [currentProgress]);
 
     return (
-        <div className="progress" >
-            <div className="progress__container" ref={ref} onClick={(e) => handleClickProgress(e)}>
+        <div
+            className="progress"
+            onMouseDown={handlerMouseDown}
+            onMouseLeave={handlerMouseleave}
+            onMouseUp={handlerMouseUp}
+            onMouseMove={handlerMouseMove}
+        >
+            <div
+                className="progress__container"
+                ref={ref}
+                onClick={(e) => handleClickProgress(e)}
+            >
                 <div className={`
                         progress__progress 
                         ${point ? 'progress__progress_type_point' : ''}
                     `}
                     style={{ width: progressWidth + '%' }}
-                    onMouseDown={handlerMouseDown}
-                    onMouseLeave={handlerMouseleave}
-                    onMouseUp={handlerMouseUp}
-                    onMouseMove={handlerMouseMove}
                 >
                 </div>
             </div>

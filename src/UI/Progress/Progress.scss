@@ -2,25 +2,26 @@
 
 .progress {
     width: 100%;
-    height: 6px;
+     height: 30px;
     display: flex;
+    align-items: center;
 
     &__progress {
         background-color: $color-green;
         height: 6px;
         position: relative;
-
+        cursor: pointer;
         &_type_point {
             &::after {
                 content: '';
-                height: 12px;
-                width: 12px;
+                height: 14px;
+                width: 14px;
                 background-color: $color-green;                
                 position: absolute;
                 right: -2px;
-                top: -3px;
+                top: -4px;
                 border-radius: 6px;
-                cursor: pointer;
+                
             }
         }
     }
