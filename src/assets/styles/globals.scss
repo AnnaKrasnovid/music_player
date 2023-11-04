@@ -42,7 +42,7 @@ a {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(30px);
     background-color: $color-dark;
     color: $color-white;
     background-image: url(../../assets/images/images/bg.png);
@@ -56,4 +56,5 @@ a {
     backdrop-filter: blur(10px);
     box-shadow: $box-shadow;
     border-radius: $border-radius;
+   
 }

@@ -2,7 +2,7 @@
 
 .progress {
     width: 100%;
-     height: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
 
@@ -11,17 +11,17 @@
         height: 6px;
         position: relative;
         cursor: pointer;
+       
         &_type_point {
             &::after {
                 content: '';
                 height: 14px;
                 width: 14px;
-                background-color: $color-green;                
+                background-color: $color-green;
                 position: absolute;
                 right: -2px;
                 top: -4px;
                 border-radius: 6px;
-                
             }
         }
     }
@@ -31,5 +31,6 @@
         height: 6px;
         width: 100%;
         transition: none;
+        box-shadow:  7px 7px 16px rgba(0, 0, 0, 0.5);
     }
 }

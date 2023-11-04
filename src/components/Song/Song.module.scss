@@ -11,8 +11,14 @@
     box-shadow: 0px 7px 16px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s linear;
     position: relative;
+    cursor: pointer;
+
+    &_active {
+        box-shadow: 0px 7px 16px rgba(0, 0, 0, 0.8);
+    }
+
     &:hover {
-        cursor: pointer;
+
         transform: scale(1.01);
         transition: transform 0.3s linear;
     }

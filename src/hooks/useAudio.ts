@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { AudioInt } from '../types/AudioInt';
 import { SongInt } from '../types/SongInt';
@@ -7,6 +7,7 @@ export function useAudio(songs: Array<SongInt>): AudioInt {
     const ref = useRef<HTMLAudioElement>();
     const [indexSong, setIndexSong] = useState<number>(0);
     const [isPlaySong, setIsPlaySong] = useState<boolean>(false);
+    const [volume, setVolume] = useState<number>(0.5);
 
     const prevSong = useCallback(() => {
         if (indexSong === 0) {
@@ -17,7 +18,6 @@ export function useAudio(songs: Array<SongInt>): AudioInt {
     }, [indexSong]);
 
     const nextSong = useCallback(() => {
-        console.log(songs.length)
         if (indexSong === songs.length - 1) {
             setIndexSong(0);
         } else {
@@ -41,20 +41,28 @@ export function useAudio(songs: Array<SongInt>): AudioInt {
 
     const changeTime = useCallback((seconds: number) => {
         if (ref.current) {
-            ref.current.currentTime = seconds;
+            ref.current.currentTime = seconds;            
         }
     }, []);
 
     const changeVolume = useCallback((volume: number) => {
         if (ref.current) {
             ref.current.volume = volume;
+            setVolume(volume)
         }
-    }, []);
+    }, []); 
+
+    useEffect(()=> {
+        if (ref.current) {
+        changeVolume(volume)
+        }
+    },[ref.current])
     
     return {
         ref,
         indexSong,
         isPlaySong,
+        volume,
         playSong,
         pauseSong,
         prevSong,

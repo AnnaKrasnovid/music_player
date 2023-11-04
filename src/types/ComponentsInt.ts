@@ -14,7 +14,9 @@ export interface ToolsInt {
     nextSong: () => void,
     pauseSong: () => void,
     playSong: () => void,
-    isPlaySong: boolean,
+    changeVolume: (progress: number) => void,
+    isPlaySong: boolean,  
+    volume?:number 
 }
 
 export interface ButtonInt {

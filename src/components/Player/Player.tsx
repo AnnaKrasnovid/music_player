@@ -2,7 +2,7 @@ import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import Tools from '../Tools/Tools';
-import Sound from '../Sound/Sound';
+
 import Image from '../Image/Image';
 import AudioTrack from '../AudioTrack/AudioTrack';
 import HeadingSong from '../HeadingSong/HeadingSong';
@@ -21,6 +21,7 @@ function Player() {
         ref,
         isPlaySong,
         indexSong,
+        volume,
         playSong,
         pauseSong,
         prevSong,
@@ -50,7 +51,8 @@ function Player() {
     useEffect(() => {
         if (isPlaySong) {
             playSong();
-        }
+        } 
+        console.log(ref)      
     }, [activeSong, isPlaySong])
 
     return (
@@ -65,18 +67,15 @@ function Player() {
                         onEnded={nextSong}
                     />
                     <Image isPlaySong={isPlaySong} />
-
-                    <div className={styles['player__box']}>
-                        <HeadingSong />
-                        <Sound callback={changeVolume} />
-                    </div>
-
+                    <HeadingSong />
                     <Tools
                         pauseSong={pauseSong}
                         playSong={playSong}
                         prevSong={prevSong}
                         nextSong={nextSong}
+                        changeVolume={changeVolume}
                         isPlaySong={isPlaySong}
+                        volume={volume}
                     />
                     <AudioTrack changeTime={changeTime} />
                 </>
