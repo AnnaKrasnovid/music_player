@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 
 import Song from '../Song/Song';
+import Animation from '../Animation/Animation';
 
 import { SongInt } from '../../types/SongInt';
 import { useActions } from '../../hooks/useActions';
@@ -12,17 +13,25 @@ function Songs() {
     const { songs } = useSelector((state: any) => state.songs);
 
     const handleClickSong = (id: number) => {
-        const song = songs.find((item: SongInt) => item.id === id)       
+        const song = songs.find((item: SongInt) => item.id === id)
         switchSong({ song })
     }
-   
+
     return (
         <div className={`container ${styles['songs']}`}>
             <ul className={styles['songs-list']}>
-                {songs.map((item: SongInt) => (
-                    <li key={item.id} onClick={() => handleClickSong(item.id)}>
+                {songs.map((item: SongInt, index: number) => (
+                    <Animation
+                        as='li'
+                        key={item.id}
+                        callback={() => handleClickSong(item.id)}
+                        elements={songs.length}
+                        index={index}
+                        animationName={styles['songs-animation']}
+                        delay={0.2}
+                    >
                         <Song item={item} />
-                    </li>
+                    </Animation>
                 ))}
             </ul>
         </div>
