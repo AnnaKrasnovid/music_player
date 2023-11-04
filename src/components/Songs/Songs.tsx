@@ -27,7 +27,7 @@ function Songs() {
                         callback={() => handleClickSong(item.id)}
                         elements={songs.length}
                         index={index}
-                        animationName={styles['songs-animation']}
+                        animationName='animation-position'
                         delay={0.2}
                     >
                         <Song item={item} />

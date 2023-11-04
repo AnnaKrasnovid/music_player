@@ -17,8 +17,9 @@
 
     &__container {
         width: 100%;
-        display: grid;
-        grid-template-columns: max-content 1fr;
+        // display: grid;
+        // grid-template-columns:minmax(max-content, 480px)  1fr;
+        display: flex;
         gap: 50px;
     }
 }

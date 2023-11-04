@@ -1,27 +1,11 @@
 @import '../../assets/styles/variables.scss';
 
-@keyframes position {
-    0% {
-        right: -110%;
-    }
-
-    100% {
-        right: 0;
-    }
-}
-
-.songs-animation {
-    position: relative;
-     right: -110%;
-    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-    animation-name: position;
-    animation-fill-mode: forwards;
-}
 
 .songs {
     padding: 24px;
     padding: 36px 24px 48px;
     overflow: hidden;
+    width: 100%;
 }
 
 .songs-list {

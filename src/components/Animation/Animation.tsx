@@ -1,10 +1,12 @@
 import React, { ReactNode, ComponentProps, ElementType } from 'react';
 import styles from './Animation.module.scss';
 
+type AnimationTypes = 'animation' | 'animation-position';
+
 type AnimationOwnProps<E extends ElementType = ElementType> = {
     as?: E; // тег б по умолчанию div
     children: ReactNode | string, // анимируемый элемент
-    animationName: string, //класс анимации     
+    animationName: AnimationTypes, //класс анимации     
     elements:number, // количество элементов анимации
     index: number,// индекс элемента
     stepDelay?: number, //промежуток задержки
@@ -38,7 +40,7 @@ export default function Animation<E extends ElementType = typeof defaultElement>
     return (
         <Tag
             className={`
-                ${animationName?  animationName: styles['animation']} 
+                ${animationName?  styles[`${animationName}`]: styles['animation']} 
                 ${className ? className : ''}
             `}
             style={
