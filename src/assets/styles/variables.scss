@@ -1,15 +1,14 @@
 $color-primary: #7D2253;
-$color-primary-active: rgba(12, 182, 115, 0.60);
-
 $color-secondary: #E3E3E3;
 
-$color-green: #7D2253;
 $color-white: #FFFFFF;
 $color-black: #000000;
-$color-gray:#FFFDFD;
+// $color-gray:#FFFDFD;
 $color-middle-gray:#C5C6C5;
-// $color-shadow: #1C274C;
 $box-shadow: 7px 7px 16px rgba(0, 0, 0, 0.5);
-$color-dark:#1e1e1e;// #040A0A;;
-
+$color-dark:#1e1e1e;
+$padding-container: 36px 24px 48px;
 $border-radius: 24px;
+
+$max-height-container: 715px;
+$transition: all 0.3s linear;

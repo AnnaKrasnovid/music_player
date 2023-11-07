@@ -1,0 +1,15 @@
+.button-close {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    background-color: transparent;
+    transition: transform 500ms ease 0s;
+    opacity: 0.5;
+    cursor: pointer;
+
+    &:hover {
+        transform: rotate(180deg);
+    }
+}

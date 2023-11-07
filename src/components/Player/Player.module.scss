@@ -1,17 +1,18 @@
 @import '../../assets/styles/variables.scss';
 
 .player {
-    padding: 36px 24px 48px;
+    padding: $padding-container;
     max-width: 480px;
     width: 100%;
-    min-height: 200px;
+    // min-height: 200px;
+//    max-height: $max-height-container;
     display: flex;
     flex-direction: column;
     gap: 24px;
+    grid-area: player;
 
     &__box {
         display: grid;
         grid-template-columns: 0.7fr 0.3fr;
-
     }
 }

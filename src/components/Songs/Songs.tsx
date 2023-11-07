@@ -8,7 +8,7 @@ import { useActions } from '../../hooks/useActions';
 
 import styles from './Songs.module.scss';
 
-function Songs() {
+function Songs({isActive}:any) {
     const { switchSong } = useActions();
     const { songs } = useSelector((state: any) => state.songs);
 
@@ -18,8 +18,9 @@ function Songs() {
     }
 
     return (
-        <div className={`container ${styles['songs']}`}>
-            <ul className={styles['songs-list']}>
+      
+        <div className={` ${styles['songs'] } ${isActive? styles['songs_inactive']:''}`}>
+            <ul className={`scroll ${styles['songs-list']} ${isActive? styles['songs-list_inactive']:''}`}>
                 {songs.map((item: SongInt, index: number) => (
                     <Animation
                         as='li'

@@ -10,11 +10,11 @@ const songsSlice = createSlice({
     name: 'songs',
     initialState,
     reducers: {
-        getSongs(state) {
-            state.songs = songs;
+        changeSongsList(state, action) {
+            state.songs = action.payload.songs;
         },       
     },
 });
 
-export const { getSongs } = songsSlice.actions;
+export const { changeSongsList } = songsSlice.actions;
 export default songsSlice.reducer;

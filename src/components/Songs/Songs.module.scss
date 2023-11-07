@@ -1,11 +1,24 @@
 @import '../../assets/styles/variables.scss';
 
-
 .songs {
-    padding: 24px;
+    padding: $padding-container;
     padding: 36px 24px 48px;
     overflow: hidden;
     width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    box-shadow: $box-shadow;
+    border-radius: $border-radius;   
+
+    transition: all 0.3s linear;
+    &_inactive {
+        transition: all 0.3s linear;
+        background: rgba(0, 0, 0, 0);
+        backdrop-filter: blur(0px);
+       
+    }
 }
 
 .songs-list {
@@ -13,8 +26,9 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-
+    transition: all 0.3s linear;
+    &_inactive {
+        opacity: 0;
+        transition: all 0.3s linear;        
+    }   
 }
-
-
-

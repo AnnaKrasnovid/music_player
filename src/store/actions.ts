@@ -1,9 +1,14 @@
-import { getSongs } from './reducers/songsSlice';
-import { switchSong, getDuration, updateCurrentTime } from './reducers/activeSong';
+import { changeSongsList } from './reducers/songsSlice';
+import { switchSong, getDuration, updateCurrentTime } from './reducers/activeSongSlice';
+import { addSong, deleteSong } from './reducers/favoritesSlice';
+import { addPlaylist } from './reducers/playlistsSlice';
 
 export {
-    getSongs,
+    changeSongsList,
     switchSong,
     getDuration,
-    updateCurrentTime
+    updateCurrentTime,
+    addSong,
+    deleteSong,
+    addPlaylist
 }

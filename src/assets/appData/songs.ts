@@ -37,3 +37,13 @@ export const songs: Array<SongInt> = [
         cover: ''
     },
 ]
+
+export const songs_two: Array<SongInt> = [  
+    {
+        id: 1,
+        audio: AudioOne,
+        author: 'Benjamin Tissot',
+        title: 'Adventure',
+        cover: Img
+    },    
+]

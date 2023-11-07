@@ -24,6 +24,11 @@ export interface ButtonInt {
     callback: () => void
 }
 
+export interface ButtonIconInt {
+    type: 'like' | 'list',
+    callback: () => void
+}
+
 export interface ProgressInt {
     point?: boolean,
     callback?: (progress: number) => void,

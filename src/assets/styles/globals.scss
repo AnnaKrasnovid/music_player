@@ -5,6 +5,7 @@ button {
     padding: 0;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 * {
@@ -51,10 +52,47 @@ a {
     background-size: cover;
 }
 
+.root {
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.10);
+    backdrop-filter: blur(10px);
+}
+
 .container {
     background: rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(10px);
     box-shadow: $box-shadow;
-    border-radius: $border-radius;
-   
+    border-radius: $border-radius;   
+}
+
+.scroll {  
+    overflow-y: auto;  
+    overflow-x: hidden;   
+   // padding-right: 10px; //отступ скролла от содержимого слева
+   //два свойства ниже для браузера firefox
+    scrollbar-width: thin;
+    scrollbar-color: $color-primary rgba(0, 0, 0, 0.2);
+}
+
+.scroll::-webkit-scrollbar {
+    width: 4px; //ширина скролла  
+    height: 4px;    
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background: $color-primary; //цвет  скролла     
+    border-radius: 10px;    
+}
+
+.scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2); //цвет бокса скролла    
+    background-clip: content-box;
+    border-radius: 10px;    
+    margin-top: 5px; // отступ вверху скролла от контейнера
+    margin-bottom: 5px; // отступ внизу скролла от контейнера  
+}
+
+.scroll::-webkit-scrollbar-button{
+    padding: 10px;
+    display: none;
 }

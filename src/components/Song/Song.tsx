@@ -5,14 +5,13 @@ import styles from './Song.module.scss';
 
 function Song({ item }: any) {
     const { activeSong } = useSelector((state: any) => state.activeSong);
-    // console.log( ${activeSong?.id=== item.id? styles['song__active']: ''})
-console.log(activeSong)
+
     return (
-        <div className={`${styles['song']} `}>
+        <div className={`${styles['song']} ${activeSong.id === item.id ? styles['song_active'] : ''}`}>
             <div className={styles['song__img']}>
                 <img
                     src={item.cover ? item.cover : Cover}
-                    alt={`Изображение к ${item.title}, item.author`}
+                    alt={`Изображение к '${item.title}', ${item.author}`}
                 />
             </div>
             <div className={styles['song__info']}>
@@ -20,7 +19,7 @@ console.log(activeSong)
                 <p className={styles['song__text']}>{item.title}</p>
             </div>
             <div className={styles['song__box']}>
-                {item.title}
+                Здесь будет анимация
             </div>
         </div>
     );

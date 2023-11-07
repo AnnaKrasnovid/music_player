@@ -41,7 +41,7 @@ export function useAudio(songs: Array<SongInt>): AudioInt {
 
     const changeTime = useCallback((seconds: number) => {
         if (ref.current) {
-            ref.current.currentTime = seconds;            
+            ref.current.currentTime = seconds;
         }
     }, []);
 
@@ -50,14 +50,14 @@ export function useAudio(songs: Array<SongInt>): AudioInt {
             ref.current.volume = volume;
             setVolume(volume)
         }
-    }, []); 
+    }, []);
 
-    useEffect(()=> {
+    useEffect(() => {
         if (ref.current) {
-        changeVolume(volume)
+            changeVolume(volume)
         }
-    },[ref.current])
-    
+    }, [ref.current])
+
     return {
         ref,
         indexSong,

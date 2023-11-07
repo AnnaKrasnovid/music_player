@@ -1,31 +1,48 @@
 @import '../../assets/styles/variables.scss';
 
-.main {
-   
-    margin: 0 auto;
-    min-height: 100vh;
+.layout {
+    padding: 30px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-   
-}
+    min-height: 100vh;
+    max-width: 1480px;
+    margin: 0 auto;
+    overflow: hidden;
 
-.player-page {
-    max-width: 1380px;
-    width: 100%;
-   display: flex;
+    &__main {
+        width: 100%;
+    }
 
     &__container {
         width: 100%;
-        // display: grid;
-        // grid-template-columns:minmax(max-content, 480px)  1fr;
         display: flex;
-        gap: 50px;
+    }
+
+    &__grid {
+        width: 100%;
+        display: flex;
+        gap: 2rem;
+        max-height: $max-height-container;
+        // display: grid;
+        // grid-template-columns: max-content 1fr;
+        // grid-template-rows: max-content 1fr;
+        // grid-template-areas: 
+        // '. content'
+        // 'player content'        ;
+        // overflow: hidden;
+    }
+
+    &__box {
+        width: 100%;
+        grid-area: content;
+        overflow: hidden;
     }
 }
 
-@media(max-width: 1480px) {
-    .main {
-    margin: 0 5%;
+@media(max-width: 1580px) {
+    .layout {
+        margin: 0 5%;
     }
 }
