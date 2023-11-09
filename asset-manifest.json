@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/music_player/static/css/main.358a6b7f.css",
+    "main.css": "/music_player/static/css/main.bccc5b93.css",
     "main.js": "/music_player/static/js/main.2e6cea65.js",
     "static/media/elevate.mp3": "/music_player/static/media/elevate.6a7983736ee04c6c39b1.mp3",
     "static/media/adventure.mp3": "/music_player/static/media/adventure.aed8b904dfe2f7fa8a99.mp3",
@@ -10,18 +10,18 @@
     "static/media/cover.png": "/music_player/static/media/cover.371a9808e42c392fd573.png",
     "static/media/adele.jpg": "/music_player/static/media/adele.6ad6cf25ebad83ab00d4.jpg",
     "static/media/Roboto-Light.woff2": "/music_player/static/media/Roboto-Light.81c7589f0813d50a673e.woff2",
-    "static/media/rewind-back.svg": "/music_player/static/media/rewind-back.b4b4006ea5a236e0db15.svg",
+    "static/media/rewind-back.svg": "/music_player/static/media/rewind-back.e07c66d7fe64e9f1943e.svg",
     "static/media/pause.svg": "/music_player/static/media/pause.b722a5f64acead0ef212.svg",
     "static/media/arrows.svg": "/music_player/static/media/arrows.417cfc69763cc81d9707.svg",
     "index.html": "/music_player/index.html",
     "static/media/volume-cross.svg": "/music_player/static/media/volume-cross.989ad904c5f82be906f5.svg",
     "static/media/volume-loud.svg": "/music_player/static/media/volume-loud.f3e26140487b1a9031a8.svg",
     "static/media/pause-stream.svg": "/music_player/static/media/pause-stream.80698decc8e3adb6ed6e.svg",
-    "main.358a6b7f.css.map": "/music_player/static/css/main.358a6b7f.css.map",
+    "main.bccc5b93.css.map": "/music_player/static/css/main.bccc5b93.css.map",
     "main.2e6cea65.js.map": "/music_player/static/js/main.2e6cea65.js.map"
   },
   "entrypoints": [
-    "static/css/main.358a6b7f.css",
+    "static/css/main.bccc5b93.css",
     "static/js/main.2e6cea65.js"
   ]
 }
