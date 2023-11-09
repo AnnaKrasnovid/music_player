@@ -1,6 +1,98 @@
+@import './variables.scss';
+
 button {
     margin: 0;
     padding: 0;
     background-color: transparent;
     border: none;
+    cursor: pointer;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.link {
+    color: #ffffff;
+}
+
+#root {
+    font-family: 'Roboto', Arial, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    backdrop-filter: blur(30px);
+    background-color: $color-dark;
+    color: $color-white;
+    background-image: url(../../assets/images/images/bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.root {
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.10);
+    backdrop-filter: blur(10px);
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    box-shadow: $box-shadow;
+    border-radius: $border-radius;   
+}
+
+.scroll {  
+    overflow-y: auto;  
+    overflow-x: hidden;   
+   // padding-right: 10px; //отступ скролла от содержимого слева
+   //два свойства ниже для браузера firefox
+    scrollbar-width: thin;
+    scrollbar-color: $color-primary rgba(0, 0, 0, 0.2);
+}
+
+.scroll::-webkit-scrollbar {
+    width: 4px; //ширина скролла  
+    height: 4px;    
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background: $color-primary; //цвет  скролла     
+    border-radius: 10px;    
+}
+
+.scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2); //цвет бокса скролла    
+    background-clip: content-box;
+    border-radius: 10px;    
+    margin-top: 5px; // отступ вверху скролла от контейнера
+    margin-bottom: 5px; // отступ внизу скролла от контейнера  
+}
+
+.scroll::-webkit-scrollbar-button{
+    padding: 10px;
+    display: none;
 }

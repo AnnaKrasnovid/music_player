@@ -1,0 +1,37 @@
+@import '../../assets/styles/variables.scss';
+
+.tooltip {
+    padding: 1.5rem;
+    background: #1e1e1e;
+    background: rgba(0, 0, 0, 0.5);
+    // border: 0.5px solid #1e1e1e;
+     backdrop-filter: blur(1px);
+     border-radius: 8px;
+    // box-shadow: $box-shadow;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 7px 16px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    max-width: 300px;
+    width: 100%;
+    position: absolute;
+    top: -110%;
+    right: 0;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility .5s linear, opacity .5s linear;
+
+    &_active {
+        visibility: visible;
+        opacity: 1;
+        transition: visibility .5s linear, opacity .5s linear;
+    }
+
+    &__text {}
+}
+
+// @media screen and (max-width: $breakpoint-md) {
+//     .tooltip {
+//         max-width: 70%;
+//     }
+// }

@@ -1,14 +1,18 @@
 @import '../../assets/styles/variables.scss';
 
 .player {
-    max-width: 580px;
-    min-height: 200px;
+    padding: $padding-container;
+    max-width: 480px;
     width: 100%;
-    border-radius: 8px;
-    background: $color-gray;
-    box-shadow: 0px 0px 8px 2px #1C274C;
-    padding: 0 12px;
-    display: grid;
-    grid-template-columns: max-content 1fr 150px;
-    column-gap: 8px;
+    // min-height: 200px;
+//    max-height: $max-height-container;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    grid-area: player;
+
+    &__box {
+        display: grid;
+        grid-template-columns: 0.7fr 0.3fr;
+    }
 }

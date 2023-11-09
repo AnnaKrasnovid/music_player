@@ -1,0 +1,40 @@
+.tabs {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content 1fr;
+    // gap: 1rem;
+
+    &__buttons {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__item {
+        // border-bottom: 2px solid $color-white;
+        transition: border-bottom .3s linear;
+
+        &_active {
+            // border-bottom: 2px solid $color-middle-green;
+            transition: border-bottom .3s linear;
+        }
+    }
+
+    &__content {}
+
+    &__container {
+        display: none;
+        height: 100%;
+
+        &_active {
+            display: block;
+        }
+    }
+}
+
+.tab {
+    padding: 10px;
+    color: #ffffff;
+    // background-color: var(--bg-color-container);
+    // color: var(--color)
+}

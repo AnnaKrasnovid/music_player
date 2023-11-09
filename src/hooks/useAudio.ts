@@ -1,12 +1,17 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 
 import { AudioInt } from '../types/AudioInt';
 import { SongInt } from '../types/SongInt';
+import { useActions } from '../hooks/useActions';
 
 export function useAudio(songs: Array<SongInt>): AudioInt {
     const ref = useRef<HTMLAudioElement>();
+    const { changePlaybackSong } = useActions();
     const [indexSong, setIndexSong] = useState<number>(0);
-    const [isPlaySong, setIsPlaySong] = useState<boolean>(false);
+    // const [isPlaySong, setIsPlaySong] = useState<boolean>(false);
+    const [volume, setVolume] = useState<number>(0.5);
 
     const prevSong = useCallback(() => {
         if (indexSong === 0) {
@@ -27,17 +32,18 @@ export function useAudio(songs: Array<SongInt>): AudioInt {
     const playSong = useCallback(() => {
         if (ref.current) {
             ref.current.play();
-            setIsPlaySong(true);
+            // setIsPlaySong(true);
+            changePlaybackSong({ isPlaySong: true });
         }
     }, []);
 
     const pauseSong = useCallback(() => {
         if (ref.current) {
             ref.current.pause();
-            setIsPlaySong(false);
+            // setIsPlaySong(false);
+            changePlaybackSong({ isPlaySong: false });           
         }
     }, []);
-
     const changeTime = useCallback((seconds: number) => {
         if (ref.current) {
             ref.current.currentTime = seconds;
@@ -47,18 +53,26 @@ export function useAudio(songs: Array<SongInt>): AudioInt {
     const changeVolume = useCallback((volume: number) => {
         if (ref.current) {
             ref.current.volume = volume;
+            setVolume(volume);
         }
     }, []);
+
+    useEffect(() => {
+        if (ref.current) {
+            changeVolume(volume);
+        }
+    }, [ref.current])
 
     return {
         ref,
         indexSong,
-        isPlaySong,
+        // isPlaySong,
+        volume,
         playSong,
         pauseSong,
         prevSong,
         nextSong,
         changeTime,
-        changeVolume
+        changeVolume,
     };
 };

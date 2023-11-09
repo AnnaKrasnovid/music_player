@@ -1,82 +1,96 @@
-import { memo, useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import Tools from '../Tools/Tools';
-import PlayerBody from '../PlayerBody/PlayerBody';
-import Progress from '../../UI/Progress/Progress';
-import Sound from '../Sound/Sound';
-import Image from '../Image/Image';
 
-import { songs } from '../../assets/appData/songs';
+import Image from '../Image/Image';
+import AudioTrack from '../AudioTrack/AudioTrack';
+import HeadingSong from '../HeadingSong/HeadingSong';
+import Like from '../../UI/Like/Like';
+
 import { useAudio } from '../../hooks/useAudio';
+import { useActions } from '../../hooks/useActions';
+import { SongInt } from '../../types/SongInt';
 
 import styles from './Player.module.scss';
 
 function Player() {
+    const { switchSong, getDuration, updateCurrentTime, addSong, deleteSong } = useActions();
+    const { songs } = useSelector((state: any) => state.songs);
+    const { activeSong, isPlaySong } = useSelector((state: any) => state.activeSong);
 
     const {
         ref,
-        isPlaySong,
+        // isPlaySong,
         indexSong,
+        volume,
         playSong,
         pauseSong,
         prevSong,
         nextSong,
         changeTime,
-        changeVolume
+        changeVolume,
     } = useAudio(songs);
-    const [song, setSong] = useState(songs[0]);
-    const [duration, setDuration] = useState(0);
-    const [currentTime, setCurrentTime] = useState(0);
 
     const updateProgress = () => {
-        setDuration(ref.current.duration);
-        setCurrentTime(ref.current.currentTime);
+        updateCurrentTime({ currentTime: ref.current.currentTime })
     };
 
-    const playNewSong = useCallback(() => {
-        setSong(songs[indexSong])
+    const changeActiveSong = useCallback(() => {
+        switchSong({ song: songs[indexSong] });
     }, [indexSong])
 
+    const getSongDuration = () => {
+        if (ref.current) {
+            getDuration({ duration: ref.current.duration });
+        }
+    }
+
+    const addInFavorites = (id: number) => {
+        const song = songs.find((item: SongInt) => item.id === id);
+        addSong({ song });
+    }
+
+    const deleteFromFavorites = (id: number) => {
+        deleteSong({ id });
+    }
+
     useEffect(() => {
-        playNewSong()
-    }, [indexSong, playNewSong])
+        if (activeSong) {
+            changeActiveSong()
+        }
+    }, [indexSong, changeActiveSong])
 
     useEffect(() => {
         if (isPlaySong) {
             playSong();
         }
-    }, [song, isPlaySong])
+    }, [activeSong, isPlaySong])
 
     return (
-        <div className={styles['player']}>
+        <div className={`container ${styles['player']}`}>
+            <audio
+                ref={ref}
+                src={activeSong.audio}
+                onLoadedMetadata={getSongDuration}
+                onTimeUpdate={updateProgress}
+                onEnded={nextSong}
+            />
+            <Image isPlaySong={isPlaySong} />
+            <div className={styles['player__box']}>
+                <HeadingSong />
+                {/* <Like type='like' callback={() => deleteFromFavorites(activeSong.id)} /> */}
+            </div>
             <Tools
                 pauseSong={pauseSong}
                 playSong={playSong}
                 prevSong={prevSong}
                 nextSong={nextSong}
+                changeVolume={changeVolume}
                 isPlaySong={isPlaySong}
+                volume={volume}
             />
-            {
-                songs.length > 0
-                    ? <>
-                        <audio
-                            ref={ref}
-                            src={song.audio}
-                            onTimeUpdate={updateProgress}
-                            onEnded={nextSong}
-                        />
-                        <PlayerBody
-                            song={song}
-                            isPlaySong={isPlaySong}
-                            currentTime={currentTime}
-                            duration={duration}
-                            changeVolume={changeVolume}
-                            changeTime={changeTime}
-                        />
-                    </>
-                    : <p>В плейлисте нет песен</p>
-            }
-            <Image isPlaySong={isPlaySong} />
+            <AudioTrack changeTime={changeTime} />
         </div>
     )
 };

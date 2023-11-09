@@ -1,0 +1,15 @@
+@import '../../assets/styles/variables.scss';
+
+.button {
+    height: 30px;
+    width: 30px;
+    justify-self: end;
+
+    &_active {
+        fill: $color-primary;
+    }
+
+    path {
+        fill: #8a8a8a;
+    }
+}

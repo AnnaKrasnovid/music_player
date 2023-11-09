@@ -1,7 +1,8 @@
 export interface AudioInt {
     ref: any,
     indexSong: number,
-    isPlaySong: boolean,
+    // isPlaySong: boolean,
+    volume:number,
     playSong: () => void,
     pauseSong: () => void,
     prevSong: () => void,

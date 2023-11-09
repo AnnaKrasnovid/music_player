@@ -1,0 +1,36 @@
+// анимация по умолчанию
+@keyframes showElement {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.animation-default {
+    opacity: 0;
+    transition: all 0.5s linear;
+    animation-name: showElement;
+    animation-fill-mode: forwards;
+}
+
+// анимация смены позиции элементов справа налево
+@keyframes position {
+    0% {
+        right: -110%;
+    }
+
+    100% {
+        right: 0;
+    }
+}
+
+.animation-position {
+    position: relative;
+    right: -110%;
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    animation-name: position;
+    animation-fill-mode: forwards;
+}

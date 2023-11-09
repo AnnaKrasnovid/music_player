@@ -3,14 +3,14 @@ import { ButtonInt } from '../../types/ComponentsInt';
 
 import styles from './Button.module.scss';
 
-function Button({type, callback}:ButtonInt) {
-    return(
+function Button({ type, callback }: ButtonInt) {
+    return (
         <button
-         type='button' 
-         className={`${styles['button']} ${styles[`button_type_${type}`]}`}
-         onClick={callback}
-         >
-         </button> 
+            type='button'
+            className={`${styles['button']} ${styles[`button_type_${type}`]}`}
+            onClick={callback}
+        >               
+        </button>
     )
 };
 
