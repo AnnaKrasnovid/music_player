@@ -17,11 +17,11 @@ import styles from './Player.module.scss';
 function Player() {
     const { switchSong, getDuration, updateCurrentTime, addSong, deleteSong } = useActions();
     const { songs } = useSelector((state: any) => state.songs);
-    const { activeSong } = useSelector((state: any) => state.activeSong);
+    const { activeSong, isPlaySong } = useSelector((state: any) => state.activeSong);
 
     const {
         ref,
-        isPlaySong,
+        // isPlaySong,
         indexSong,
         volume,
         playSong,

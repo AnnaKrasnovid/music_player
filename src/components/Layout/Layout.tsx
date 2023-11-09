@@ -15,7 +15,7 @@ function Layout() {
     const { songs } = useSelector((state: any) => state.songs);
     const { activeSong } = useSelector((state: any) => state.activeSong);
     const {openModal, closeModal,isActive}=useToggleVisibility(false)
-console.log(isActive)
+// console.log(isActive)
     useEffect(() => {
         switchSong({ song: songs[0] })
     }, [songs])
@@ -26,7 +26,7 @@ console.log(isActive)
 
     return (
         <div className={styles['layout']}>
-            <Header callback={openModal}/>
+            {/* <Header callback={openModal}/> */}
             <main className={styles['layout__main']}>
                 <div className={styles['layout__container']}>
                     <div className={styles['layout__grid']}>

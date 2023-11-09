@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams, useOutletContext } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import ButtonClose from '../../UI/ButtonClose/ButtonClose';
@@ -12,10 +11,8 @@ import styles from './Collections.module.scss';
 
 function Collections({closeModal, isActive}:any) {
     const { changeSongsList } = useActions();
-    const { songs } = useSelector((state: any) => state.songs);
     const { favoritesSongs } = useSelector((state: any) => state.favorites);
-    const { playlists } = useSelector((state: any) => state.playlists);
-   
+    const { playlists } = useSelector((state: any) => state.playlists);   
     
     const collectionsData = [
         ...playlists,
@@ -23,49 +20,9 @@ function Collections({closeModal, isActive}:any) {
             id: 2,
             name: 'favorites',
             songs: favoritesSongs
-        },
-        {
-            id: 2,
-            name: 'favorites',
-            songs: favoritesSongs
-        },
-        {
-            id: 2,
-            name: 'favorites',
-            songs: favoritesSongs
-        },
-        {
-            id: 2,
-            name: 'favorites',
-            songs: favoritesSongs
-        },
-        // {
-        //     id: 2,
-        //     name: 'favorites',
-        //     songs: favoritesSongs
-        // },
-        {
-            id: 2,
-            name: 'favorites',
-            songs: favoritesSongs
-        },
-        {
-            id: 2,
-            name: 'favorites',
-            songs: favoritesSongs
-        },
-        {
-            id: 2,
-            name: 'favorites',
-            songs: favoritesSongs
-        },
-        {
-            id: 2,
-            name: 'favorites',
-            songs: favoritesSongs
-        },
-
+        },       
     ]
+
     const changePlaylist = (id: number) => {
         const list = collectionsData.find((item) => item.id === id)
         changeSongsList({ songs: list.songs })

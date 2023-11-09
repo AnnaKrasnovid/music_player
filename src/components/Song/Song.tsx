@@ -1,10 +1,14 @@
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
+
+import SoundBar from '../../UI/SoundBar/SoundBar';
 
 import Cover from '../../assets/images/images/cover.png';
 import styles from './Song.module.scss';
 
+
 function Song({ item }: any) {
-    const { activeSong } = useSelector((state: any) => state.activeSong);
+    const { activeSong, isPlaySong } = useSelector((state: any) => state.activeSong);
 
     return (
         <div className={`${styles['song']} ${activeSong.id === item.id ? styles['song_active'] : ''}`}>
@@ -18,9 +22,7 @@ function Song({ item }: any) {
                 <h2 className={styles['song__title']}> {item.author}</h2>
                 <p className={styles['song__text']}>{item.title}</p>
             </div>
-            <div className={styles['song__box']}>
-                Здесь будет анимация
-            </div>
+            {activeSong.id === item.id && isPlaySong && <SoundBar />}
         </div>
     );
 };

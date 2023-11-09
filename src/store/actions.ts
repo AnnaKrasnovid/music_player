@@ -1,5 +1,5 @@
 import { changeSongsList } from './reducers/songsSlice';
-import { switchSong, getDuration, updateCurrentTime } from './reducers/activeSongSlice';
+import { switchSong, getDuration, updateCurrentTime,changePlaybackSong } from './reducers/activeSongSlice';
 import { addSong, deleteSong } from './reducers/favoritesSlice';
 import { addPlaylist } from './reducers/playlistsSlice';
 
@@ -8,6 +8,7 @@ export {
     switchSong,
     getDuration,
     updateCurrentTime,
+    changePlaybackSong,
     addSong,
     deleteSong,
     addPlaylist

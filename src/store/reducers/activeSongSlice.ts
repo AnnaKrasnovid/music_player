@@ -4,6 +4,7 @@ const initialState = {
     activeSong: null,
     duration: 0,
     currentTime: 0,
+    isPlaySong:false,
 }
 
 const activeSongSlice = createSlice({
@@ -19,8 +20,12 @@ const activeSongSlice = createSlice({
         updateCurrentTime(state, action) {
             state.currentTime = action.payload.currentTime;
         },
+        changePlaybackSong(state, action) {
+            state.isPlaySong = action.payload.isPlaySong;
+            console.log(action.payload.isPlaySong)
+        },
     },
 });
 
-export const { switchSong, getDuration, updateCurrentTime } = activeSongSlice.actions;
+export const { switchSong, getDuration, updateCurrentTime,changePlaybackSong } = activeSongSlice.actions;
 export default activeSongSlice.reducer;
