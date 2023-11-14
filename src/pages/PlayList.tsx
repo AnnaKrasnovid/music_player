@@ -8,11 +8,10 @@ function PlayList() {
     //@ts-ignore
     const [closeModal, isActive] = useOutletContext();
     return (
-        <div style={{position:'relative', width:'100%'}}>
+        <div className='container' style={{position:'relative', width:'100%', overflow:'hidden'}}>
             <Songs isActive={isActive}/>
             <Collections closeModal={closeModal} isActive={isActive} />
         </div>
-
     );
 };
 

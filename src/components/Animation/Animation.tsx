@@ -7,12 +7,12 @@ type AnimationOwnProps<E extends ElementType = ElementType> = {
     as?: E; // тег б по умолчанию div
     children: ReactNode | string, // анимируемый элемент
     animationName?: AnimationTypes, //класс анимации     
-    elements:number, // количество элементов анимации
+    elements: number, // количество элементов анимации
     index: number,// индекс элемента
     stepDelay?: number, //промежуток задержки
     delay?: number // задержка перед началом анимации
     className?: string,
-    isActive?:boolean,
+    isActive?: boolean,
     callback?: (...props: any) => any
 };
 
@@ -26,11 +26,11 @@ export default function Animation<E extends ElementType = typeof defaultElement>
         as,
         animationName,
         stepDelay = 0.2,
-        elements ,
+        elements,
         index = 0,
         delay = 0,
         className = '',
-        isActive=true,
+        isActive = true,
         callback = () => { }
     }: TextProps<E>
 ) {
@@ -42,15 +42,13 @@ export default function Animation<E extends ElementType = typeof defaultElement>
     return (
         <Tag
             className={`
-                ${isActive? (animationName?  styles[`${animationName}`]: styles['animation-default']) : ''} 
+                ${isActive ? (animationName ? styles[`${animationName}`] : styles['animation-default']) : ''} 
                 ${className ? className : ''}
             `}
-            style={
-                {
-                    animationDelay: animationDelay + 's',
-                    animationDuration: aninationDuration + 's'
-                }
-            }
+            style={{
+                animationDelay: animationDelay + 's',
+                animationDuration: aninationDuration + 's'
+            }}
             onClick={callback}
         >
             {children}

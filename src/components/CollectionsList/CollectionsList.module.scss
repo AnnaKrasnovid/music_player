@@ -1,0 +1,24 @@
+@import '../../assets/styles/variables.scss';
+
+.collections-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: max-content;
+    // display: flex;
+    // flex-wrap: wrap;
+    gap: 16px;
+    padding-right: 12px;
+    width: 100%;
+}
+
+@media(max-width: 1580px) {
+    .collections-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width: 1400px) {
+    .collections-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

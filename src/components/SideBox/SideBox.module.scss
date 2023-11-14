@@ -1,0 +1,19 @@
+@import '../../assets/styles/variables.scss';
+
+.collections {
+    display: flex;
+    height: 100%;
+    padding: $padding-container;
+    padding-right: 12px;
+    position: absolute;
+    right: -120%;
+    top: 0;
+    transition: $transition;
+    width: 100%;
+    will-change: auto;
+
+    &_active {
+        right: 0;
+        transition: $transition;
+    }
+}

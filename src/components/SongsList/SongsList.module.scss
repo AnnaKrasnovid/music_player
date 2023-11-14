@@ -1,0 +1,13 @@
+@import '../../assets/styles/variables.scss';
+
+.songs-list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: all 0.3s linear;
+    &_inactive {
+        opacity: 0;
+        transition: all 0.3s linear;        
+    }   
+}

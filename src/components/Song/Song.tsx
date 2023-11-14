@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 import SoundBar from '../../UI/SoundBar/SoundBar';
 
 import Cover from '../../assets/images/images/cover.png';
 import styles from './Song.module.scss';
-
 
 function Song({ item }: any) {
     const { activeSong, isPlaySong } = useSelector((state: any) => state.activeSong);

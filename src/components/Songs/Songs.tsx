@@ -1,14 +1,17 @@
 import { useSelector } from 'react-redux';
 
-import Song from '../Song/Song';
-import Animation from '../Animation/Animation';
+import SongsList from '../SongsList/SongsList';
 
 import { SongInt } from '../../types/SongInt';
 import { useActions } from '../../hooks/useActions';
 
 import styles from './Songs.module.scss';
 
-function Songs({isActive}:any) {
+interface SongsInt {
+    isActive: boolean
+}
+
+function Songs({ isActive }: SongsInt) {
     const { switchSong } = useActions();
     const { songs } = useSelector((state: any) => state.songs);
 
@@ -18,23 +21,8 @@ function Songs({isActive}:any) {
     }
 
     return (
-      
-        <div className={` ${styles['songs'] } ${isActive? styles['songs_inactive']:''}`}>
-            <ul className={`scroll ${styles['songs-list']} ${isActive? styles['songs-list_inactive']:''}`}>
-                {songs.map((item: SongInt, index: number) => (
-                    <Animation
-                        as='li'
-                        key={item.id}
-                        callback={() => handleClickSong(item.id)}
-                        elements={songs.length}
-                        index={index}
-                        animationName='animation-position'
-                        delay={0.2}
-                    >
-                        <Song item={item} />
-                    </Animation>
-                ))}
-            </ul>
+        <div className={` ${styles['songs']} ${isActive ? styles['songs_inactive'] : ''}`}>
+            <SongsList list={songs} callback={handleClickSong} isActive={isActive} />
         </div>
     );
 };

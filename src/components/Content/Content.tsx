@@ -7,8 +7,8 @@ import styles from './Content.module.scss';
 function Content() {
     const labels = ['list', 'lists', 'search']
     const content = [
-        <Songs />,
-        <Collections />,
+        // <Songs />,
+        // <Collections />,
         <div></div>,
     ]
 

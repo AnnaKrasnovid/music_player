@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect } from 'react';
 
 import Button from '../../UI/Button/Button';
 import Sound from '../Sound/Sound';
@@ -9,7 +9,8 @@ import { useToggleVisibility } from '../../hooks/useToggleVisibillity';
 
 import styles from './Tools.module.scss';
 
-function Tools({ prevSong, nextSong, pauseSong, playSong, changeVolume, isPlaySong, volume }: ToolsInt) {
+function Tools(props: ToolsInt) {
+    const { prevSong, nextSong, pauseSong, playSong, changeVolume, isPlaySong, volume } = props;
     const { ref, isActive, openModal, closeModal } = useToggleVisibility(false);
 
     useEffect(() => {

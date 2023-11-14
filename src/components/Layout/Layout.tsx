@@ -14,29 +14,25 @@ function Layout() {
     const { switchSong } = useActions();
     const { songs } = useSelector((state: any) => state.songs);
     const { activeSong } = useSelector((state: any) => state.activeSong);
-    const {openModal, closeModal,isActive}=useToggleVisibility(false)
-// console.log(isActive)
+    const { openModal, closeModal, isActive } = useToggleVisibility(false);
+
     useEffect(() => {
         switchSong({ song: songs[0] })
     }, [songs])
 
-    useEffect(() => {
-        console.log(activeSong, songs)
-    }, [activeSong])
+    // useEffect(() => {
+    //     console.log(activeSong, songs)
+    // }, [activeSong])
 
     return (
         <div className={styles['layout']}>
-            {/* <Header callback={openModal}/> */}
+            <Header callback={openModal} />
             <main className={styles['layout__main']}>
                 <div className={styles['layout__container']}>
                     <div className={styles['layout__grid']}>
                         {activeSong && <Player />}
                         {activeSong
-                            ? (
-                                // <div className={styles['layout__box']}>                                    
-                                    <Outlet context={[closeModal,isActive]} />
-                                // </div>
-                            )
+                            ? <Outlet context={[closeModal, isActive]} />
                             : <p>Нет данных </p>
                         }
                     </div>
